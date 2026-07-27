@@ -77,27 +77,6 @@ Rewards can be based on:
 
 ---
 
-## 🚀 Future Plans
-
-This repository represents the first step toward a complete RPG experience.
-
-Future versions may include:
-
-- Classes
-- Weapons
-- Armor
-- Skills
-- Inventory
-- Equipment
-- Dungeons
-- Raids
-- Guilds
-- Quests
-- Crafting
-- Boss Phases
-
----
-
 ## 📜 License
 
 MIT License
