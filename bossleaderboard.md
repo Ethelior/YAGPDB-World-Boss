@@ -5,7 +5,7 @@
  Command:
  !bossleaderboard
 
- Version: 1.0.0
+ Version: 2.0.0
 
  Description:
  Displays the top World Boss damage dealers.
@@ -22,7 +22,7 @@
 {{$config := sdict
     "leaderKey" "wb_leaderboard"
     "color" 16766720
-    "footer" "World Boss System v1.0.0"
+    "footer" "World Boss System v2.0.0"
 }}
 
 
