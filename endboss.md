@@ -5,7 +5,7 @@
  Command:
  !endboss
 
- Version: 1.0.0
+ Version: 2.0.0
 
  Description:
  Ends the active World Boss battle.
@@ -23,7 +23,7 @@
     "bossKey" "wb_boss"
     "successColor" 3066993
     "errorColor" 15158332
-    "footer" "World Boss System v1.0.0"
+    "footer" "World Boss System v2.0.0"
 }}
 
 
