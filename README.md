@@ -1,4 +1,4 @@
-# ⚔️ Discord RPG Engine
+# ⚔️ World Boss System
 
 A complete RPG system built entirely with **YAGPDB Custom Commands**.
 
