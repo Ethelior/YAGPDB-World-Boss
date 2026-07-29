@@ -11,11 +11,58 @@ Create your own RPG adventure directly inside Discord with player profiles, leve
 ## 👤 Player System
 
 - RPG Profile Creation
-- Player Statistics
-- HP System
+- Dynamic Player Profiles
+- XP & Level Progression
+- HP & Max HP
 - Attack & Defense
 - Boss Tokens
-- XP & Level Progression
+- Character Revival
+
+---
+
+## ⚔️ World Boss System
+
+- Active World Boss
+- Spawn Boss
+- End Boss
+- Attack Cooldowns
+- Damage Calculation
+- Critical Hits
+- Boss Statistics
+- Boss Leaderboard
+
+---
+
+## 📊 Statistics
+
+- Player Profiles
+- Boss Statistics
+- Total Damage
+- Total Attacks
+- Critical Hits
+- Best Hit
+
+---
+
+## 🛠️ Administrator Tools
+
+- Spawn Boss
+- End Boss
+- Edit Player Stats
+- Reset Player Profiles
+- Automatic HP Validation
+- Profile Validation
+
+---
+
+## 🎨 Interface
+
+- Professional Embeds
+- XP Progress Bar
+- Mention Support
+- Config Sections
+- Clean Code Structure
+- Fully Commented Commands
 
 ---
 
@@ -51,15 +98,17 @@ Create your own RPG adventure directly inside Discord with player profiles, leve
 
 | Command | Description |
 |---------|-------------|
-| `!start` | Create your RPG profile |
-| `!profile` | View your RPG profile |
-| `!profile @user` | View another player's profile |
-| `!attack` | Attack the active World Boss |
-| `!boss` | Display the active World Boss |
-| `!bossstats` | View World Boss statistics |
-| `!setstat` | Modify player statistics (Admin) |
-| `!resetprofile` | Reset a player's RPG profile (Admin) |
-| `!revive` | Revives the player in full health after death |
+| `!profile` | Start your your profile, start the adventure and view your stats. |
+| `!profile @user` | View another player's RPG profile. |
+| `!attack` | Attack the active World Boss. |
+| `!boss` | Display the currently active World Boss. |
+| `!bossstats` | Display your personal World Boss statistics. |
+| `!bossleaderboard` | View the top World Boss players ranked by performance. |
+| `!revive` | Revive your character after being defeated. |
+| `!spawnboss` | Spawn a new World Boss (Administrator). |
+| `!endboss` | End the current World Boss encounter (Administrator). |
+| `!setstat` | Modify any player statistic (Administrator). |
+| `!resetprofile` | Completely reset a player's RPG profile (Administrator). |
 
 ---
 
