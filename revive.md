@@ -53,17 +53,23 @@
 
     {{$cooldownDB := dbGet 0 $cooldownKey}}
 
-    {{if $cooldownDB}}
+{{if $cooldownDB}}
 
-        {{sendMessage nil (cembed
-            "title" "⏳ Revive Cooldown"
-            "description" "You must wait before reviving again."
-            "color" $config.errorColor
-        )}}
+    {{$expires := $cooldownDB.ExpiresAt.Unix}}
 
-        {{return}}
+    {{sendMessage nil (cembed
+        "title" "⏳ REVIVE COOLDOWN"
+        "description" (printf
+            "💀 Your body is still recovering.\n\n⚔️ You can revive again **<t:%d:R>**."
+            $expires
+        )
+        "color" $config.errorColor
+        "footer" (sdict
+            "text" $config.footer
+        )
+    )}}
 
-    {{end}}
+    {{return}}
 
 {{end}}
 
