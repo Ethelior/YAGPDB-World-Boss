@@ -5,7 +5,7 @@
  Command:
  !boss
 
- Version: 1.0.0
+ Version: 2.0.0
 
  Description:
  Displays the current active World Boss.
@@ -23,7 +23,7 @@
     "bossKey" "wb_boss"
     "embedColor" 15105570
     "errorColor" 15158332
-    "footer" "World Boss System v1.0.0"
+    "footer" "World Boss System v2.0.0"
 }}
 
 
