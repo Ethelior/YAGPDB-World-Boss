@@ -1,86 +1,118 @@
-# 🌍 YAGPDB World Boss
+# ⚔️ Discord RPG Engine
 
-A complete **World Boss** system built entirely with **YAGPDB Custom Commands**.
+A complete RPG system built entirely with **YAGPDB Custom Commands**.
 
-Fight alongside your Discord community against powerful bosses with shared HP, track total damage dealt, earn rewards, and compete for the highest damage.
-
-This project is designed as a standalone community event while also serving as the foundation for a future full RPG system.
+Create your own RPG adventure directly inside Discord with player profiles, leveling, world bosses, combat, statistics and administrator tools.
 
 ---
 
-## ✨ Features
+# ✨ Features
 
-- 🌍 Shared World Boss
-- ❤️ Persistent Boss HP
-- ⚔️ Community Boss Battles
-- 🎯 Random Damage System
-- 💥 Critical Hit Chance
-- 🏆 Damage Leaderboard
-- 🎁 Reward Distribution
-- ⏳ Attack Cooldowns
-- 📊 Boss Status Command
-- ⚡ Clean Embed Design
-- 🔧 Easy Configuration
+## 👤 Player System
+
+- RPG Profile Creation
+- Player Statistics
+- HP System
+- Attack & Defense
+- Boss Tokens
+- XP & Level Progression
 
 ---
 
-## 📋 Commands
+## ⚔️ Combat
+
+- World Boss Battles
+- Damage Calculation
+- Critical Hits
+- Attack Cooldowns
+- Death Handling
+
+---
+
+## 📊 Statistics
+
+- Personal RPG Profile
+- Boss Statistics
+- Total Damage
+- Total Attacks
+- Critical Hits
+- Best Hit
+
+---
+
+## 🛠️ Admin Commands
+
+- Set Player Stats
+- Reset Player Profile
+
+---
+
+# 📦 Commands
 
 | Command | Description |
 |---------|-------------|
-| `!attack` | Attack the current World Boss |
-| `!bossstats` | Display boss HP and information |
-| `!bossleaderboard` | Show top damage dealers |
-| `!spawnboss` | Spawns a new boss |
-| `!boss` | Gives the stats of an active boss |
-| `!endboss` | Ends the current boss (admin command) |
+| `!start` | Create your RPG profile |
+| `!profile` | View your RPG profile |
+| `!profile @user` | View another player's profile |
+| `!attack` | Attack the active World Boss |
+| `!boss` | Display the active World Boss |
+| `!bossstats` | View World Boss statistics |
+| `!setstat` | Modify player statistics (Admin) |
+| `!resetprofile` | Reset a player's RPG profile (Admin) |
 
 ---
 
-## ⚙️ Configuration
+# ❤️ Player Stats
 
-Edit the configuration section at the top of the command.
-
-Example options include:
-
-- Boss Name
-- Boss Max HP
-- Minimum Damage
-- Maximum Damage
-- Critical Hit Chance
-- Critical Damage Multiplier
-- Cooldown Duration
-- Reward Amounts
-- Embed Colors
-- Footer Text
+- Level
+- XP
+- HP
+- Max HP
+- Attack
+- Defense
+- Boss Tokens
 
 ---
 
-## 🎁 Rewards
+# ⚙️ Features Included
 
-Players earn rewards by participating in boss battles.
-
-Rewards can be based on:
-
-- Participation
-- Final Blow
-- Highest Damage
-- Boss Defeat
-
----
-
-## 🛠 Requirements
-
-- YAGPDB
-- Discord Server
-- Custom Commands Enabled
+- Dynamic XP Progress Bar
+- Mention Support
+- Professional Embeds
+- RPG Database System
+- Clean Code Structure
+- Config Section
+- Fully Commented Code
 
 ---
 
-## 📜 License
+# 🚀 Current Version
+
+**v2.0.0**
+
+The RPG Engine now includes a complete player profile system, administrator tools and a polished foundation for future expansions.
+
+---
+
+# 🔮 Planned Features
+
+- Inventory System
+- Equipment
+- Shop
+- Loot
+- Potions
+- Quests
+- Dungeons
+- Monsters
+- Skills
+- Titles
+
+---
+
+# 📄 License
 
 MIT License
 
 ---
 
-Created by **Ethelior**
+Created with ❤️ by **Ethelior**
