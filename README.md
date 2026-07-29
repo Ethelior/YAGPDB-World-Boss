@@ -59,6 +59,7 @@ Create your own RPG adventure directly inside Discord with player profiles, leve
 | `!bossstats` | View World Boss statistics |
 | `!setstat` | Modify player statistics (Admin) |
 | `!resetprofile` | Reset a player's RPG profile (Admin) |
+| `!revive` | Revives the player in full health after death |
 
 ---
 
