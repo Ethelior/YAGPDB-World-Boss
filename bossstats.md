@@ -5,7 +5,7 @@
  Command:
  !bossstats
 
- Version: 1.0.0
+ Version: 2.0.0
 
  Description:
  Displays player's World Boss statistics.
@@ -24,7 +24,7 @@
     "statsPrefix" "wb_stats_"
     "successColor" 3066993
     "errorColor" 15158332
-    "footer" "World Boss System v1.0.0"
+    "footer" "World Boss System v2.0.0"
 }}
 
 
