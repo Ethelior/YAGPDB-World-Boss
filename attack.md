@@ -5,7 +5,7 @@
  Command:
  !attack
 
- Version: 1.0.0
+ Version: 2.0.0
 
  Description:
  Attack the active World Boss.
@@ -35,8 +35,23 @@
     "successColor" 3066993
     "errorColor" 15158332
 
-    "footer" "World Boss System v1.0.0"
+    "footer" "World Boss System v2.0.0"
 }}
+
+{{$profileKey := print "rpg_profile_" .User.ID}}
+
+{{$profileDB := dbGet .User.ID $profileKey}}
+
+{{if not $profileDB}}
+    {{sendMessage nil (cembed
+        "title" "❌ No RPG Profile"
+        "description" "Create your profile first with **!profile**."
+        "color" $config.errorColor
+    )}}
+    {{return}}
+{{end}}
+
+{{$profile := $profileDB.Value}}
 
 {{/* Attack Cooldown */}}
 
@@ -61,6 +76,18 @@
     {{end}}
 
     {{dbSetExpire 0 $cooldownKey true 600}}
+
+{{end}}
+
+{{if not $profile.alive}}
+
+    {{sendMessage nil (cembed
+        "title" "💀 You are dead!"
+        "description" "Wait until you revive before attacking again."
+        "color" $config.errorColor
+    )}}
+
+    {{return}}
 
 {{end}}
 
@@ -127,7 +154,10 @@
 
 {{/* Damage Calculation */}}
 
-{{$damage := randInt $config.minDamage (add $config.maxDamage 1)}}
+{{$damage := add
+    $profile.attack
+    (randInt 0 21)
+}}
 
 {{$critical := false}}
 
@@ -158,6 +188,138 @@
 
 {{dbSet 0 $config.bossKey $boss}}
 
+
+{{$bossMessages := cslice}}
+
+{{if eq $boss.id "dragon_001"}}
+
+    {{$bossMessages = cslice
+        "breathes scorching flames!"
+        "slashes with its massive claws!"
+        "lets out a terrifying roar!"
+        "burns everything in its path!"
+        "dives from the sky!"
+        "unleashes dragon fire!"
+    }}
+
+{{else if eq $boss.id "demon_001"}}
+
+    {{$bossMessages = cslice
+        "casts dark magic!"
+        "summons demonic power!"
+        "corrupts the battlefield!"
+        "laughs menacingly before attacking!"
+        "unleashes cursed flames!"
+        "drains your life force!"
+    }}
+
+{{else if eq $boss.id "kraken_001"}}
+
+    {{$bossMessages = cslice
+        "crushes you with its tentacles!"
+        "creates a massive tidal wave!"
+        "drags you beneath the sea!"
+        "wraps its tentacles around you!"
+        "splashes a giant wave!"
+        "emerges from the deep!"
+    }}
+
+{{else if eq $boss.id "titan_001"}}
+
+    {{$bossMessages = cslice
+        "fires a laser barrage!"
+        "launches a missile strike!"
+        "activates heavy assault mode!"
+        "charges its plasma cannon!"
+        "fires its railgun!"
+        "deploys combat drones!"
+    }}
+
+{{else}}
+
+    {{$bossMessages = cslice
+        "attacks!"
+    }}
+
+{{end}}
+
+{{$bossAction := index $bossMessages (randInt 0 (len $bossMessages))}}
+
+{{/* Boss Counter Attack */}}
+
+{{$bossHit := randInt $boss.min_attack (add $boss.max_attack 1)}}
+
+{{$bossCritical := false}}
+
+{{if le (randInt 1 101) $boss.critChance}}
+    {{$bossHit = mult $bossHit $boss.critMultiplier}}
+    {{$bossCritical = true}}
+{{end}}
+
+{{$bossDamage := sub $bossHit $profile.defense}}
+
+{{if lt $bossDamage 1}}
+    {{$bossDamage = 1}}
+{{end}}
+
+{{$newPlayerHP := sub $profile.hp $bossDamage}}
+
+{{if lt $newPlayerHP 0}}
+    {{$newPlayerHP = 0}}
+{{end}}
+
+{{$profile.Set "hp" $newPlayerHP}}
+{{$tokenReward := 1}}
+
+{{if $critical}}
+    {{$tokenReward = 5}}
+{{end}}
+
+{{$profile.Set "tokens" (add $profile.tokens $tokenReward)}}
+
+{{$xpReward := randInt 5 13}}
+
+{{if $critical}}
+    {{$xpReward = add $xpReward 15}}
+{{end}}
+
+{{$profile.Set "xp" (add $profile.xp $xpReward)}}
+
+{{$levelUp := false}}
+
+{{$neededXP := mult $profile.level 100}}
+
+{{if ge $profile.xp $neededXP}}
+
+    {{$profile.Set "xp" (sub $profile.xp $neededXP)}}
+
+    {{$profile.Set "level" (add $profile.level 1)}}
+
+    {{$profile.Set "maxHP" (add $profile.maxHP 50)}}
+
+    {{$profile.Set "hp" $profile.maxHP}}
+
+    {{$profile.Set "attack" (add $profile.attack 2)}}
+
+    {{$profile.Set "defense" (add $profile.defense 1)}}
+
+    {{$levelUp = true}}
+
+{{end}}
+
+{{/* Death Check */}}
+
+{{$deathMessage := ""}}
+
+{{if and (eq $newPlayerHP 0) (not $levelUp)}}
+
+    {{$profile.Set "alive" false}}
+
+    {{$deathMessage = "\n\n☠️ **You have been defeated by the World Boss!**\nUse `!revive` when available."}}
+
+{{end}}
+
+{{dbSet .User.ID $profileKey $profile}}
 
 {{/* Player Stats */}}
 
@@ -223,37 +385,6 @@
 
 {{end}}
 
-{{/* Update Global Leaderboard */}}
-
-{{$leaderKey := "wb_leaderboard"}}
-
-{{$leaderDB := dbGet 0 $leaderKey}}
-
-{{if $leaderDB}}
-
-    {{$leader := $leaderDB.Value}}
-
-    {{$userID := str .User.ID}}
-
-    {{$oldDamage := 0}}
-
-    {{if $leader.Get $userID}}
-        {{$oldDamage = toInt ($leader.Get $userID)}}
-    {{end}}
-
-    {{$leader.Set $userID (add $oldDamage $damage)}}
-
-    {{dbSet 0 $leaderKey $leader}}
-
-{{else}}
-
-    {{$leader := sdict}}
-
-    {{$leader.Set (str .User.ID) $damage}}
-
-    {{dbSet 0 $leaderKey $leader}}
-
-{{end}}
 
 {{/* Result Embed */}}
 
@@ -263,21 +394,76 @@
     {{$message = "🔥 **CRITICAL HIT!**"}}
 {{end}}
 
+{{/* Combat Result Text */}}
+
+{{$counterTitle := print $boss.emoji " " $boss.name " " $bossAction}}
+
+
+
+{{if $bossCritical}}
+    {{$counterTitle = print "💥 " $boss.name " unleashes a DEVASTATING CRITICAL HIT!"}}
+{{end}}
+
+{{$counterMessage := print
+    "\n\n"
+    $counterTitle
+    "\n"
+    "💔 Damage Received: **"
+    $bossDamage
+    "**\n"
+    "❤️ Your HP: **"
+    $profile.hp
+    "/"
+    $profile.maxHP
+    "**"
+}}
+
+{{$counterMessage = print
+    $counterMessage
+    $deathMessage
+}}
+
+{{$rewardText := print "🪙 Reward: **+" $tokenReward " Boss Token"}}
+
+{{if ne $tokenReward 1}}
+    {{$rewardText = print $rewardText "s"}}
+{{end}}
+
+{{$rewardText = print $rewardText "**"}}
 
 {{$embed := cembed
     "title" "⚔️ World Boss Attack"
     "description" (printf
-        "<@%d> attacked %s **%s**\n\n💥 Damage: **%d**\n%s\n\n❤️ Boss HP: **%d / %d**"
-        .User.ID
-        $boss.emoji
-        $boss.name
-        $damage
-        $message
-        $boss.hp
-        $boss.max_hp
-    )
+    "<@%d> attacked %s **%s**\n\n💥 Damage: **%d**\n🪙 Reward: **+%d Boss Token(s)**\n\n✨ XP Gained: **+%d XP**\n%s\n\n❤️ Boss HP: **%d / %d**%s"
+    .User.ID
+    $boss.emoji
+    $boss.name
+    $damage
+    $tokenReward
+    $xpReward
+    $message
+    $boss.hp
+    $boss.max_hp
+    $counterMessage
+)
     "color" $config.successColor
     "footer" (sdict "text" $config.footer)
 }}
 
 {{sendMessage nil $embed}}
+
+{{if $levelUp}}
+
+{{sendMessage nil (cembed
+    "title" "🎉 LEVEL UP!"
+    "description" (printf
+        "Congratulations <@%d>!\n\n⭐ You reached **Level %d**!\n\n❤️ Max HP: **+50**\n⚔️ Attack: **+2**\n🛡️ Defense: **+1**\n\n💚 Your HP has been fully restored!"
+        .User.ID
+        $profile.level
+    )
+    "color" $config.successColor
+    "footer" (sdict "text" $config.footer)
+    )
+}}
+
+{{end}}
