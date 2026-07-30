@@ -28,7 +28,7 @@
     "profilePrefix" "rpg_profile_"
     "embedColor" 3447003
     "errorColor" 15158332
-    "footer" "Worl Boss System • v2.0.0"
+    "footer" "World Boss System • v2.0.0"
 }}
 
 {{/* Target User */}}
