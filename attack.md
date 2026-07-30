@@ -61,19 +61,25 @@
 
     {{$cd := dbGet 0 $cooldownKey}}
 
-    {{if $cd}}
+{{if $cd}}
 
-        {{sendMessage nil (cembed
-    "title" "⏳ Attack Cooldown"
-    "description" "You must wait **10 minutes** before attacking again."
-    "color" 16753920
-)}}
+    {{$expires := $cd.ExpiresAt.Unix}}
 
-{{return}}
+    {{sendMessage nil (cembed
+        "title" "⏳ ATTACK COOLDOWN"
+        "description" (printf
+            "⚔️ You are recovering from your previous attack.\n\n🕒 You can attack again **<t:%d:R>**."
+            $expires
+        )
+        "color" $config.errorColor
+        "footer" (sdict
+            "text" $config.footer
+        )
+    )}}
 
-        {{return}}
+    {{return}}
 
-    {{end}}
+{{end}}
 
     {{dbSetExpire 0 $cooldownKey true 600}}
 
