@@ -4,7 +4,7 @@
                inventory
                special items
 ---
-- [ ] !heal --> use hp potions
+- [x] !heal --> use hp potions
                 (use hp potions with whatever a user has. Check if hp, ghp, maxhp)
 ---
 - [ ] !revive --> with revive stone or another user can revive someone else
