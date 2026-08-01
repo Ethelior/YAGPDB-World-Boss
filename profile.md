@@ -29,6 +29,21 @@
     "embedColor" 3447003
     "errorColor" 15158332
     "footer" "World Boss System • v2.0.0"
+  
+  "profileVersion" "2.1.0"
+
+"defaultLevel" 1
+"defaultXP" 0
+
+"defaultHP" 1000
+"defaultMaxHP" 1000
+
+"defaultAttack" 10
+"defaultDefense" 5
+
+"defaultTokens" 0
+
+"defaultInventorySlots" 20
 }}
 
 {{/* Target User */}}
@@ -43,19 +58,82 @@
 
 {{$profileKey := print $config.profilePrefix $targetID}}
 
+{{$now := currentTime.Unix}}
+
 {{$profileDB := dbGet (toInt $targetID) $profileKey}}
 
 {{if not $profileDB}}
 
-    {{sendMessage nil (cembed
-        "title" "❌ Profile Not Found"
-        "description" "This player does not have an RPG profile yet."
-        "color" $config.errorColor
-    )}}
+{{$profile := sdict}}
 
-    {{return}}
+{{$profile.Set "profileVersion" $config.profileVersion}}
+
+{{$profile.Set "level" $config.defaultLevel}}
+{{$profile.Set "xp" $config.defaultXP}}
+
+{{$profile.Set "hp" $config.defaultHP}}
+{{$profile.Set "maxHP" $config.defaultMaxHP}}
+
+{{$profile.Set "attack" $config.defaultAttack}}
+{{$profile.Set "defense" $config.defaultDefense}}
+
+{{$profile.Set "tokens" $config.defaultTokens}}
+
+{{$profile.Set "alive" true}}
+
+{{$profile.Set "inventory" (sdict
+    "hp" 3
+)}}
+
+{{$profile.Set "maxInventorySlots" $config.defaultInventorySlots}}
+
+{{$profile.Set "equipment" (sdict
+    "weapon" ""
+    "armor" ""
+    "shield" ""
+)}}
+
+{{$profile.Set "activeBoosts" (sdict)}}
+
+{{$profile.Set "statistics" (sdict
+    "totalBossDamage" 0
+    "bossesKilled" 0
+    "attacks" 0
+    "deaths" 0
+    "potionsUsed" 0
+)}}
+
+{{$profile.Set "createdAt" $now}}
+{{$profile.Set "lastSeen" $now}}
+
+{{dbSet (toInt $targetID) $profileKey $profile}}
+
+{{sendMessage nil (cembed
+    "title" "⚔️ Welcome to World Boss System!"
+    "description" (print
+"Your profile has been created successfully!\n\n"
+
+"🎁 **Starter Pack Received**\n"
+"❤️ HP Potion ×3\n\n"
+
+"━━━━━━━━━━━━━━━━━━\n\n"
+
+"📖 Use **!boss** to view the current World Boss.\n"
+"⚔️ Use **!attack** to join the battle.\n\n"
+
+"Good luck, Hero!"
+    )
+    "color" $config.successColor
+    "footer" (sdict
+        "text" $config.footer
+    )
+)}}
+
+{{return}}
 
 {{end}}
+
+{{$profile := $profileDB.Value}}
 
 {{$profile := $profileDB.Value}}
 
