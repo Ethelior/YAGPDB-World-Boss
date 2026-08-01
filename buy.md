@@ -68,27 +68,39 @@
 
 {{$items.Set "hp" (sdict
     "name" "HP Potion"
+    "emoji" "❤️"
     "price" 25
     "sellPrice" 12
     "category" "consumable"
     "stackable" true
+    "sellable" true
+    "effectType" "heal"
+    "effectValue" 250
 )}}
 
 {{$items.Set "ghp" (sdict
     "name" "Greater HP Potion"
+    "emoji" "💚"
     "price" 60
     "sellPrice" 30
     "category" "consumable"
     "stackable" true
+    "sellable" true
+    "effectType" "heal"
+    "effectValue" 500
 )}}
 
 {{$items.Set "maxhp" (sdict
     "name" "Max HP Potion"
+    "emoji" "💖"
     "price" 120
     "sellPrice" 60
     "category" "consumable"
     "stackable" true
-)}}
+    "sellable" true
+    "effectType" "fullHeal"
+    "effectValue" 0
+)})
 
 {{/* =======================================================
    Quantity Parsing
