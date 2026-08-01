@@ -100,7 +100,7 @@
     "sellable" true
     "effectType" "fullHeal"
     "effectValue" 0
-)})
+)}}
 
 {{/* =======================================================
    Quantity Parsing
