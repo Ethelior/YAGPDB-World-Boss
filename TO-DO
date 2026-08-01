@@ -1,10 +1,7 @@
 ## 📈 Roadmap
 
-- [ ] !buy --> boosts
-               inventory
-               special items
+- [ ] !buy (boosts , inventory, special items)
+
 ---
-- [x] !heal --> use hp potions
-                (use hp potions with whatever a user has. Check if hp, ghp, maxhp)
----
-- [ ] !revive --> with revive stone or another user can revive someone else
+
+- [ ] !revive (with revive stone or another user can revive someone else)
