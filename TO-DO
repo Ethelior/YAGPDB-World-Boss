@@ -1,8 +1,8 @@
 ## 📈 Roadmap
 
 - [ ] !buy --> boosts
-         inventory
-         special items
+               inventory
+               special items
 ---
 - [ ] !heal --> use hp potions
           (use hp potions with whatever a user has. Check if hp, ghp, maxhp)
