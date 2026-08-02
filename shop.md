@@ -32,6 +32,82 @@
 }}
 
 {{/* =======================================================
+   Item Database
+======================================================= */}}
+
+{{$items := sdict}}
+
+{{/* =======================================================
+   ❤️ Healing
+======================================================= */}}
+
+{{$items.Set "hp" (sdict
+    "id" "hp"
+    "name" "HP Potion"
+    "emoji" "❤️"
+
+    "category" "healing"
+
+    "buyPrice" 25
+    "sellPrice" 12
+
+    "stackable" true
+
+    "effectType" "heal"
+    "effectValue" 250
+
+    "rarity" "common"
+
+    "description" "Restores 250 HP."
+
+    "enabled" true
+)}}
+
+{{$items.Set "ghp" (sdict
+    "id" "ghp"
+    "name" "Greater HP Potion"
+    "emoji" "💚"
+
+    "category" "healing"
+
+    "buyPrice" 60
+    "sellPrice" 30
+
+    "stackable" true
+
+    "effectType" "heal"
+    "effectValue" 500
+
+    "rarity" "uncommon"
+
+    "description" "Restores 500 HP."
+
+    "enabled" true
+)}}
+
+{{$items.Set "maxhp" (sdict
+    "id" "maxhp"
+    "name" "Max HP Potion"
+    "emoji" "💖"
+
+    "category" "healing"
+
+    "buyPrice" 120
+    "sellPrice" 60
+
+    "stackable" true
+
+    "effectType" "heal"
+    "effectValue" -1
+
+    "rarity" "rare"
+
+    "description" "Fully restores your HP."
+
+    "enabled" true
+)}}
+
+{{/* =======================================================
    Load Profile
 ======================================================= */}}
 
@@ -155,179 +231,134 @@
 {{end}}
 
 {{/* =======================================================
-   Boosts
+   ⚔️ Boosts
 ======================================================= */}}
 
-{{if eq $category "boosts"}}
+{{$items.Set "atk" (sdict
+    "id" "atk"
+    "name" "Attack Boost"
+    "emoji" "⚔️"
 
-{{$description := print
-"🪙 **Your Boss Tokens:** **" $tokens "**\n\n"
+    "category" "boost"
 
-"━━━━━━━━━━━━━━━━━━\n\n"
+    "buyPrice" 150
+    "sellPrice" 75
 
-"⚔️ **Attack Boost**\n"
-"💰 **150 Boss Tokens**\n"
-"⏳ Duration: **1 Hour**\n"
-"Increases your Attack by **25%**.\n\n"
+    "stackable" true
 
-"━━━━━━━━━━━━━━━━━━\n\n"
+    "effectType" "attackBoost"
+    "effectValue" 25
 
-"🛡️ **Defense Boost**\n"
-"💰 **150 Boss Tokens**\n"
-"⏳ Duration: **1 Hour**\n"
-"Increases your Defense by **25%**.\n\n"
+    "duration" 3600
 
-"━━━━━━━━━━━━━━━━━━\n\n"
+    "rarity" "uncommon"
 
-"⭐ **XP Boost**\n"
-"💰 **250 Boss Tokens**\n"
-"⏳ Duration: **2 Hours**\n"
-"Earn **50%** more XP from attacks.\n\n"
+    "description" "Increase Attack by 25% for 1 hour."
 
-"━━━━━━━━━━━━━━━━━━\n\n"
+    "enabled" true
+)}}
 
-"🪙 **Boss Token Boost**\n"
-"💰 **300 Boss Tokens**\n"
-"⏳ Duration: **2 Hours**\n"
-"Earn **50%** more Boss Tokens.\n\n"
+{{$items.Set "def" (sdict
+    "id" "def"
+    "name" "Defense Boost"
+    "emoji" "🛡️"
 
-"━━━━━━━━━━━━━━━━━━\n\n"
+    "category" "boost"
 
-"**Purchase Examples**\n"
-"`!buy atkboost 1`\n"
-"`!buy defboost 1`\n"
-"`!buy xpboost 1`\n"
-"`!buy tokenboost 1`"
-}}
+    "buyPrice" 150
+    "sellPrice" 75
 
-{{$embed := cembed
-    "title" "🛒 WORLD BOSS SHOP • ⚡ Boosts"
-    "description" $description
-    "color" $config.embedColor
-    "footer" (sdict
-        "text" $config.footer
-    )
-}}
+    "stackable" true
 
-{{sendMessage nil $embed}}
-{{return}}
+    "effectType" "defenseBoost"
+    "effectValue" 25
 
-{{end}}
+    "duration" 3600
+
+    "rarity" "uncommon"
+
+    "description" "Increase Defense by 25% for 1 hour."
+
+    "enabled" true
+)}}
+
+{{$items.Set "xp" (sdict
+    "id" "xp"
+    "name" "XP Boost"
+    "emoji" "⭐"
+
+    "category" "boost"
+
+    "buyPrice" 250
+    "sellPrice" 125
+
+    "stackable" true
+
+    "effectType" "xpBoost"
+    "effectValue" 50
+
+    "duration" 7200
+
+    "rarity" "rare"
+
+    "description" "Gain 50% more XP for 2 hours."
+
+    "enabled" true
+)}}
+
+{{$items.Set "token" (sdict
+    "id" "token"
+    "name" "Boss Token Boost"
+    "emoji" "🪙"
+
+    "category" "boost"
+
+    "buyPrice" 300
+    "sellPrice" 150
+
+    "stackable" true
+
+    "effectType" "tokenBoost"
+    "effectValue" 50
+
+    "duration" 7200
+
+    "rarity" "rare"
+
+    "description" "Gain 50% more Boss Tokens for 2 hours."
+
+    "enabled" true
+)}}
 
 {{/* =======================================================
-   Inventory Upgrades
+   🎒 Inventory
 ======================================================= */}}
 
-{{if eq $category "inventory"}}
+{{$items.Set "bag" (sdict
+    "id" "bag"
+    "name" "Inventory Expansion"
+    "emoji" "🎒"
 
-{{$description := print
-"🪙 **Your Boss Tokens:** **" $tokens "**\n\n"
+    "category" "inventory"
 
-"━━━━━━━━━━━━━━━━━━\n\n"
+    "buyPrice" 250
+    "sellPrice" 125
 
-"🎒 **Inventory Upgrade I**\n"
-"💰 **250 Boss Tokens**\n"
-"Increase your Inventory Capacity\n"
-"From **20 ➜ 30 Slots**.\n\n"
+    "stackable" false
 
-"━━━━━━━━━━━━━━━━━━\n\n"
+    "effectType" "inventorySlots"
+    "effectValue" 10
 
-"🎒 **Inventory Upgrade II**\n"
-"💰 **500 Boss Tokens**\n"
-"Increase your Inventory Capacity\n"
-"From **30 ➜ 40 Slots**.\n\n"
+    "rarity" "rare"
 
-"━━━━━━━━━━━━━━━━━━\n\n"
+    "description" "Increase your inventory capacity by 10 slots."
 
-"🎒 **Inventory Upgrade III**\n"
-"💰 **1000 Boss Tokens**\n"
-"Increase your Inventory Capacity\n"
-"From **40 ➜ 50 Slots**.\n\n"
-
-"━━━━━━━━━━━━━━━━━━\n\n"
-
-"**Purchase Examples**\n"
-"`!buy bag1`\n"
-"`!buy bag2`\n"
-"`!buy bag3`"
-}}
-
-{{$embed := cembed
-    "title" "🛒 WORLD BOSS SHOP • 🎒 Inventory Upgrades"
-    "description" $description
-    "color" $config.embedColor
-    "footer" (sdict
-        "text" $config.footer
-    )
-}}
-
-{{sendMessage nil $embed}}
-{{return}}
-
-{{end}}
+    "enabled" true
+)}}
 
 {{/* =======================================================
-   Special Items
+   ✨ Special
 ======================================================= */}}
-
-{{if eq $category "special"}}
-
-{{$description := print
-"🪙 **Your Boss Tokens:** **" $tokens "**\n\n"
-
-"━━━━━━━━━━━━━━━━━━\n\n"
-
-"💎 **Lucky Charm**\n"
-"💰 **2,500 Boss Tokens**\n"
-"Permanent **+5% Boss Token Gain**.\n\n"
-
-"━━━━━━━━━━━━━━━━━━\n\n"
-
-"📜 **Ancient Knowledge**\n"
-"💰 **3,000 Boss Tokens**\n"
-"Permanent **+5% XP Gain**.\n\n"
-
-"━━━━━━━━━━━━━━━━━━\n\n"
-
-"🗡️ **Warrior's Emblem**\n"
-"💰 **5,000 Boss Tokens**\n"
-"Permanent **+5 Attack**.\n\n"
-
-"━━━━━━━━━━━━━━━━━━\n\n"
-
-"🛡️ **Guardian's Crest**\n"
-"💰 **5,000 Boss Tokens**\n"
-"Permanent **+5 Defense**.\n\n"
-
-"━━━━━━━━━━━━━━━━━━\n\n"
-
-"❤️ **Vitality Crystal**\n"
-"💰 **7,500 Boss Tokens**\n"
-"Permanent **+100 Max HP**.\n\n"
-
-"━━━━━━━━━━━━━━━━━━\n\n"
-
-"**Purchase Examples**\n"
-"`!buy lucky`\n"
-"`!buy knowledge`\n"
-"`!buy emblem`\n"
-"`!buy crest`\n"
-"`!buy vitality`"
-}}
-
-{{$embed := cembed
-    "title" "🛒 WORLD BOSS SHOP • ⭐ Special Items"
-    "description" $description
-    "color" $config.embedColor
-    "footer" (sdict
-        "text" $config.footer
-    )
-}}
-
-{{sendMessage nil $embed}}
-{{return}}
-
-{{end}}
 
 {{/* =======================================================
    Invalid Category
