@@ -156,14 +156,11 @@
 "Temporary Buffs\n\n"
 "🎒 **Inventory**\n"
 "Backpack Upgrades\n\n"
-"⭐ **Special Items**\n"
-"Permanent Upgrades\n\n"
 "━━━━━━━━━━━━━━━━━━\n\n"
 "**Commands**\n"
 "`!shop consumables`\n"
 "`!shop boosts`\n"
 "`!shop inventory`\n"
-"`!shop special`"
 }}
 
 {{$embed := cembed
@@ -226,6 +223,95 @@
 }}
 
 {{sendMessage nil $embed}}
+{{return}}
+
+{{end}}
+
+{{/* =======================================================
+   ⚡ Boost Shop
+======================================================= */}}
+
+{{if eq $category "boosts"}}
+
+{{$description := print
+"🪙 **Your Boss Tokens:** **" $tokens "**\n\n"
+
+"━━━━━━━━━━━━━━━━━━\n\n"
+
+"⚔️ **Attack Boost**\n"
+"💰 **150 Boss Tokens**\n"
+"+25% Attack for **1 hour**.\n\n"
+
+"━━━━━━━━━━━━━━━━━━\n\n"
+
+"🛡️ **Defense Boost**\n"
+"💰 **150 Boss Tokens**\n"
+"+25% Defense for **1 hour**.\n\n"
+
+"━━━━━━━━━━━━━━━━━━\n\n"
+
+"⭐ **XP Boost**\n"
+"💰 **250 Boss Tokens**\n"
+"+50% XP for **2 hours**.\n\n"
+
+"━━━━━━━━━━━━━━━━━━\n\n"
+
+"🪙 **Boss Token Boost**\n"
+"💰 **300 Boss Tokens**\n"
+"+50% Boss Tokens for **2 hours**.\n\n"
+
+"━━━━━━━━━━━━━━━━━━\n\n"
+
+"**Purchase Examples**\n"
+"`!buy atk`\n"
+"`!buy def`\n"
+"`!buy xp`\n"
+"`!buy token`"
+}}
+
+{{sendMessage nil (cembed
+"title" "🛒 WORLD BOSS SHOP • ⚡ Boosts"
+"description" $description
+"color" $config.embedColor
+"footer" (sdict
+"text" $config.footer
+)
+)}}
+
+{{return}}
+
+{{end}}
+
+{{/* =======================================================
+   🎒 Inventory Shop
+======================================================= */}}
+
+{{if eq $category "inventory"}}
+
+{{$description := print
+"🪙 **Your Boss Tokens:** **" $tokens "**\n\n"
+
+"━━━━━━━━━━━━━━━━━━\n\n"
+
+"🎒 **Inventory Expansion**\n"
+"💰 **250 Boss Tokens**\n"
+"+10 Inventory Slots.\n\n"
+
+"━━━━━━━━━━━━━━━━━━\n\n"
+
+"**Purchase Example**\n"
+"`!buy bag`"
+}}
+
+{{sendMessage nil (cembed
+    "title" "🛒 WORLD BOSS SHOP • 🎒 Inventory"
+    "description" $description
+    "color" $config.embedColor
+    "footer" (sdict
+        "text" $config.footer
+    )
+)}}
+
 {{return}}
 
 {{end}}
@@ -356,9 +442,6 @@
     "enabled" true
 )}}
 
-{{/* =======================================================
-   ✨ Special
-======================================================= */}}
 
 {{/* =======================================================
    Invalid Category
@@ -378,9 +461,6 @@
 
 "🎒 **Inventory**\n"
 "`!shop inventory`\n\n"
-
-"⭐ **Special Items**\n"
-"`!shop special`"
     )
 
     "color" $config.errorColor
