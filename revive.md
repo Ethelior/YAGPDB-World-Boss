@@ -73,6 +73,8 @@
 
 {{end}}
 
+{{end}}
+
 {{/* Check if already alive */}}
 
 {{if $profile.alive}}
