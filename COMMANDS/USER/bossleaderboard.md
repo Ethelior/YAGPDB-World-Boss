@@ -1,24 +1,3 @@
-{{/*
-================================================
- World Boss System
-
- Command:
- !bossleaderboard
-
- Version: 2.0.0
-
- Description:
- Displays the top World Boss damage dealers.
-
- Features:
- - Global leaderboard
- - Top 10 players
- - Damage ranking
- - RPG style embed
-
-================================================
-*/}}
-
 {{$config := sdict
     "leaderKey" "wb_leaderboard"
     "color" 16766720
