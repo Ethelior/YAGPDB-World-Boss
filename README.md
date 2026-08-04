@@ -76,24 +76,7 @@ It includes:
 - Importing the Custom Commands
 - Command setup
 - Database configuration
-- Webhook configuration
 - Recommended installation order
-
----
-
-⚙️ Configuration
-
-All configurable values are documented in SETTINGS.md.
-
-Examples include:
-
-- Starting player stats
-- Attack cooldown
-- Boss settings
-- Shop prices
-- Item values
-- Embed colors
-- Database keys
 
 ---
 
@@ -101,7 +84,7 @@ Examples include:
 
 README.md
 INSTALLATION.md
-SETTINGS.md
+CONTRIBUTING.md
 CHANGELOG.md
 LICENSE
 
