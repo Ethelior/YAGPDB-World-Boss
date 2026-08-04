@@ -1,35 +1,9 @@
-{{/*
-================================================
- World Boss System
-
- Command:
- !profile
-
- Version:
- 2.0.0
-
- Created by:
- Ethelior
-
- Description:
- Displays an RPG player's profile.
-
- Features:
- - Self profile
- - Mention profile
- - XP Progress Bar
- - RPG Stats
- - Professional Embed
-
-================================================
-*/}}
-
 {{$config := sdict
     "profilePrefix" "rpg_profile_"
     "embedColor" 3447003
     "errorColor" 15158332
     "footer" "World Boss System • v2.0.0"
-
+  
   "profileVersion" "2.1.0"
 
 "defaultLevel" 1
@@ -132,8 +106,6 @@
 {{return}}
 
 {{end}}
-
-{{$profile := $profileDB.Value}}
 
 {{$profile := $profileDB.Value}}
 
