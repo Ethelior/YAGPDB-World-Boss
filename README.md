@@ -80,19 +80,6 @@ It includes:
 
 ---
 
-📁 Project Structure
-
-README.md
-INSTALLATION.md
-CONTRIBUTING.md
-LICENSE
-
-Commands/
- ├── User/
- └── Admin/
-
----
-
 🤝 Contributing
 
 Suggestions, bug reports and improvements are always welcome.
