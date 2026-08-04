@@ -58,19 +58,10 @@ Configuration options include:
 - Shop prices
 - Boss settings
 - Database keys
-- Webhook settings
-
-For a complete explanation of every setting, see SETTINGS.md.
 
 ---
 
-🌐 Step 3 – Configure Webhooks (Optional)
-
-If you want the system to automatically post boss announcements, create a Discord webhook and paste the webhook URL into the configuration section of the required commands.
-
----
-
-🧪 Step 4 – Test the Installation
+🧪 Step 3 – Test the Installation
 
 Run the following commands to verify that everything works correctly.
 
@@ -84,18 +75,6 @@ If all commands execute successfully, the installation is complete.
 
 ---
 
-📂 Recommended Channel Structure
-
-Although not required, the following channel layout is recommended:
-
-- "#world-boss"
-- "#boss-log"
-- "#bot-commands"
-
-This keeps all RPG activity organized.
-
----
-
 🔒 Permissions
 
 Only trusted administrators should have access to the following commands:
@@ -105,8 +84,6 @@ Only trusted administrators should have access to the following commands:
 - "!setstat"
 - "!resetprofile"
 - "!item"
-
-Restrict these commands using Discord permissions or YAGPDB command restrictions.
 
 ---
 
