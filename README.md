@@ -26,30 +26,30 @@ Fight powerful bosses with your community, level up your character, collect item
 
 👤 User Commands
 
-Command| Description
-"!attack"| Attack the active World Boss and deal damage.
-"!boss"| Display information about the currently active World Boss.
-"!bossstats"| View your personal World Boss battle statistics.
-"!leaderboard"| Display the global damage leaderboard.
-"!profile"| Create your RPG profile (if it doesn't exist) and view your stats.
-"!inventory"| View every item stored in your inventory.
-"!shop"| Open the World Boss item shop.
-"!buy"| Purchase an item from the shop using Boss Tokens.
-"!sell"| Sell an item from your inventory.
-"!use"| Use an item from your inventory.
-"!heal"| Restore your HP.
-"!revive"| Revive after being defeated in battle.
+| Command | Description | Permission |
+| "!attack"| Attack the active World Boss and deal damage. | 👤 User |
+| "!boss"| Display detailed information about the current World Boss, including its HP and battle status. | 👤 User |
+| "!bossstats" | View your personal World Boss battle statistics. | 👤 User |
+| "!leaderboard" | Display the global leaderboard ranked by total damage dealt. | 👤 User |
+| "!profile" | Create your RPG profile (if it doesn't exist) and view your character's statistics. | 👤 User |
+| "!inventory" | Display all items currently stored in your inventory.| 👤 User |
+| "!shop" | Browse the available items in the World Boss Shop. | 👤 User |
+| "!buy" | Purchase an item from the shop using Boss Tokens. | 👤 User |
+| "!sell" | Sell items from your inventory for Boss Tokens. | 👤 User |
+| "!use" | Use an item from your inventory. | 👤 User |
+| "!heal" | Restore your HP using the available healing system. | 👤 User |
+| "!revive" | Revive your character after being defeated by a World Boss. | 👤 User |
 
 ---
 
 🛡️ Admin Commands
 
-Command| Description
-"!spawnboss"| Spawn a new World Boss.
-"!endboss"| End the currently active World Boss encounter.
-"!setstat"| Modify a player's RPG statistics.
-"!resetprofile"| Permanently reset a player's profile. No confirmation is required.
-"!item"| Give items directly to players.
+Command| Description| Permission
+"!spawnboss"| Spawn a new World Boss encounter for all players.| 🛡️ Admin
+"!endboss"| Immediately end the currently active World Boss battle.| 🛡️ Admin
+"!setstat"| Modify a player's RPG statistics such as HP, Attack, Defense, Tokens, or other configurable stats.| 🛡️ Admin
+"!resetprofile"| Permanently reset a player's RPG profile. This action cannot be undone and does not require confirmation.| 🛡️ Admin
+"!item"| Give one or more items directly to a player's inventory.| 🛡️ Admin
 
 ---
 
