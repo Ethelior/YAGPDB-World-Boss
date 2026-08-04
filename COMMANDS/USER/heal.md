@@ -1,22 +1,3 @@
-{{/*
-================================================
- World Boss System
-
- Command:
- !heal
-
- Version:
- 1.0.0
-
- Created by:
- Ethelior
-
- Description:
- Automatically uses the best healing potion.
-
-================================================
-*/}}
-
 {{$config := sdict
     "profilePrefix" "rpg_profile_"
     "inventoryPrefix" "rpg_inventory_"
