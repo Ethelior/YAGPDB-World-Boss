@@ -1,24 +1,3 @@
-{{/*
-================================================
- World Boss System
-
- Command:
- !endboss
-
- Version: 2.0.0
-
- Description:
- Ends the active World Boss battle.
-
- Features:
- - Admin only
- - Removes active boss
- - Test reset command
- - Confirmation embed
-
-================================================
-*/}}
-
 {{$config := sdict
     "bossKey" "wb_boss"
     "successColor" 3066993
