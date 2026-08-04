@@ -1,24 +1,3 @@
-{{/*
-================================================
- World Boss System
-
- Command:
- !boss
-
- Version: 2.0.0
-
- Description:
- Displays the current active World Boss.
-
- Features:
- - Active boss information
- - HP tracking
- - Battle ID display
- - Spawn information
-
-================================================
-*/}}
-
 {{$config := sdict
     "bossKey" "wb_boss"
     "embedColor" 15105570
