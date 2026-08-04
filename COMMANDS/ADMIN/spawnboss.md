@@ -1,25 +1,3 @@
-{{/*
-================================================
- World Boss System
-
- Command:
- !spawnboss
-
- Version: 2.0.0
-
- Description:
- Creates a random World Boss battle.
-
- Features:
- - Admin spawn command
- - Random boss selection
- - Active boss protection
- - Database storage
- - Spawn announcement embed
-
-================================================
-*/}}
-
 {{$config := sdict
     "bossKey" "wb_boss"
     "battleKey" "wb_battle_id"
