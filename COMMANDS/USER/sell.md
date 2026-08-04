@@ -1,19 +1,3 @@
-{{/*
-================================================
- World Boss System
-
- Command:
- !sell
-
- Version:
- 1.0.0
-
- Description:
- Sell items from your inventory.
-
-================================================
-*/}}
-
 {{$config := sdict
     "profilePrefix" "rpg_profile_"
 
