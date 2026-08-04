@@ -1,25 +1,3 @@
-{{/*
-================================================
- World Boss System
-
- Command:
- !bossstats
-
- Version: 2.0.0
-
- Description:
- Displays player's World Boss statistics.
-
- Features:
- - Total damage
- - Total attacks
- - Critical hits
- - Best hit
- - Personal battle profile
-
-================================================
-*/}}
-
 {{$config := sdict
     "statsPrefix" "wb_stats_"
     "successColor" 3066993
