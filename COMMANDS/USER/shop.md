@@ -1,27 +1,3 @@
-{{/*
-================================================
- World Boss System
-
- Command:
- !shop
-
- Version:
- 1.0.0
-
- Created by:
- Ethelior
-
- Description:
- Browse the World Boss Shop.
-
- Features:
- - Category Menu
- - Boss Token Balance
- - Professional Embed
-
-================================================
-*/}}
-
 {{$config := sdict
     "profilePrefix" "rpg_profile_"
 
