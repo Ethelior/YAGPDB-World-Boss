@@ -1,37 +1,3 @@
-{{/*
-================================================
- World Boss System
-
- Command:
- !resetprofile
-
- Version:
- 2.0.0
-
- Created by:
- Ethelior
-
- Description:
- Admin command to completely reset
- a player's RPG profile.
-
- Features:
- - Admin only
- - Self reset
- - Mention user reset
- - Delete RPG profile
- - Delete World Boss stats
- - Remove attack cooldown
- - Confirmation embed
-
- Usage:
- !resetprofile
- !resetprofile @user
-
-================================================
-*/}}
-
-
 {{$config := sdict
 
     "profilePrefix" "rpg_profile_"
