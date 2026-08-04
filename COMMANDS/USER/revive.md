@@ -1,24 +1,3 @@
-{{/*
-================================================
- World Boss RPG System
-
- Command:
- !revive
-
- Version: 2.0.0
-
- Description:
- Revive defeated players.
-
- Features:
- - Check death status
- - Restore HP
- - Restore alive state
- - Save profile
-
-================================================
-*/}}
-
 {{$config := sdict
     "profilePrefix" "rpg_profile_"
     "successColor" 3066993
