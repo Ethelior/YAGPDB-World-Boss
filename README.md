@@ -1,168 +1,132 @@
-# ⚔️ World Boss System
+⚔️ World Boss System for YAGPDB
 
-A complete RPG system built entirely with **YAGPDB Custom Commands**.
+A complete World Boss RPG System built with YAGPDB Custom Commands for Discord.
 
-Create your own RPG adventure directly inside Discord with player profiles, leveling, world bosses, combat, statistics and administrator tools.
-
----
-
-# ✨ Features
-
-## 👤 Player System
-
-- RPG Profile Creation
-- Dynamic Player Profiles
-- XP & Level Progression
-- HP & Max HP
-- Attack & Defense
-- Boss Tokens
-- Character Revival
+Fight powerful bosses with your community, level up your character, collect items, manage your inventory, and compete on the global leaderboard.
 
 ---
 
-## ⚔️ World Boss System
+✨ Features
 
-- Active World Boss
-- Spawn Boss
-- End Boss
-- Attack Cooldowns
-- Damage Calculation
-- Critical Hits
-- Boss Statistics
-- Boss Leaderboard
-
----
-
-## 📊 Statistics
-
-- Player Profiles
-- Boss Statistics
-- Total Damage
-- Total Attacks
-- Critical Hits
-- Best Hit
+- 🐉 Community World Boss battles
+- ⚔️ Turn-based attack system
+- ❤️ Player HP & revive system
+- 🎒 Inventory management
+- 🛒 Item shop
+- 💊 Healing system
+- 📦 Item usage
+- 💰 Buy & sell items
+- 📊 Personal battle statistics
+- 🏆 Global leaderboard
+- 👤 RPG player profiles
+- 🛠️ Fully configurable
+- 💾 Database powered using YAGPDB
 
 ---
 
-## 🛠️ Administrator Tools
+👤 User Commands
 
-- Spawn Boss
-- End Boss
-- Edit Player Stats
-- Reset Player Profiles
-- Automatic HP Validation
-- Profile Validation
-
----
-
-## 🎨 Interface
-
-- Professional Embeds
-- XP Progress Bar
-- Mention Support
-- Config Sections
-- Clean Code Structure
-- Fully Commented Commands
+Command| Description
+"!attack"| Attack the active World Boss and deal damage.
+"!boss"| Display information about the currently active World Boss.
+"!bossstats"| View your personal World Boss battle statistics.
+"!leaderboard"| Display the global damage leaderboard.
+"!profile"| Create your RPG profile (if it doesn't exist) and view your stats.
+"!inventory"| View every item stored in your inventory.
+"!shop"| Open the World Boss item shop.
+"!buy"| Purchase an item from the shop using Boss Tokens.
+"!sell"| Sell an item from your inventory.
+"!use"| Use an item from your inventory.
+"!heal"| Restore your HP.
+"!revive"| Revive after being defeated in battle.
 
 ---
 
-## ⚔️ Combat
+🛡️ Admin Commands
 
-- World Boss Battles
-- Damage Calculation
-- Critical Hits
-- Attack Cooldowns
-- Death Handling
-
----
-
-## 📊 Statistics
-
-- Personal RPG Profile
-- Boss Statistics
-- Total Damage
-- Total Attacks
-- Critical Hits
-- Best Hit
+Command| Description
+"!spawnboss"| Spawn a new World Boss.
+"!endboss"| End the currently active World Boss encounter.
+"!setstat"| Modify a player's RPG statistics.
+"!resetprofile"| Permanently reset a player's profile. No confirmation is required.
+"!item"| Give items directly to players.
 
 ---
 
-## 🛠️ Admin Commands
+🎮 Gameplay
 
-- Set Player Stats
-- Reset Player Profile
-
----
-
-# 📦 Commands
-
-| Command | Description |
-|---------|-------------|
-| `!profile` | Start your your profile, start the adventure and view your stats. |
-| `!profile @user` | View another player's RPG profile. |
-| `!attack` | Attack the active World Boss. |
-| `!boss` | Display the currently active World Boss. |
-| `!bossstats` | Display your personal World Boss statistics. |
-| `!bossleaderboard` | View the top World Boss players ranked by performance. |
-| `!revive` | Revive your character after being defeated. |
-| `!spawnboss` | Spawn a new World Boss (Administrator). |
-| `!endboss` | End the current World Boss encounter (Administrator). |
-| `!setstat` | Modify any player statistic (Administrator). |
-| `!resetprofile` | Completely reset a player's RPG profile (Administrator). |
+1. An administrator spawns a World Boss.
+2. Players create their profile using "!profile".
+3. Attack the boss using "!attack".
+4. Earn Boss Tokens and rewards.
+5. Purchase items from the shop.
+6. Use items to improve your chances in battle.
+7. Climb the leaderboard and become the strongest hunter.
 
 ---
 
-# ❤️ Player Stats
+📦 Installation
 
-- Level
-- XP
-- HP
-- Max HP
-- Attack
-- Defense
-- Boss Tokens
+The complete installation guide is available in INSTALLATION.md.
 
----
+It includes:
 
-# ⚙️ Features Included
-
-- Dynamic XP Progress Bar
-- Mention Support
-- Professional Embeds
-- RPG Database System
-- Clean Code Structure
-- Config Section
-- Fully Commented Code
+- Importing the Custom Commands
+- Command setup
+- Database configuration
+- Webhook configuration
+- Recommended installation order
 
 ---
 
-# 🚀 Current Version
+⚙️ Configuration
 
-**v2.0.0**
+All configurable values are documented in SETTINGS.md.
 
-The RPG Engine now includes a complete player profile system, administrator tools and a polished foundation for future expansions.
+Examples include:
 
----
-
-# 🔮 Planned Features
-
-- Inventory System
-- Equipment
-- Shop
-- Loot
-- Potions
-- Quests
-- Dungeons
-- Monsters
-- Skills
-- Titles
+- Starting player stats
+- Attack cooldown
+- Boss settings
+- Shop prices
+- Item values
+- Embed colors
+- Database keys
 
 ---
 
-# 📄 License
+📁 Project Structure
 
-MIT License
+README.md
+INSTALLATION.md
+SETTINGS.md
+CHANGELOG.md
+LICENSE
+
+Commands/
+ ├── User/
+ └── Admin/
 
 ---
 
-Created with ❤️ by **Ethelior**
+🤝 Contributing
+
+Suggestions, bug reports and improvements are always welcome.
+
+If you discover an issue or have an idea for a new feature, feel free to open an Issue or submit a Pull Request.
+
+---
+
+📜 License
+
+This project is released under the MIT License.
+
+See the LICENSE file for more information.
+
+---
+
+❤️ Credits
+
+Developed for the YAGPDB community.
+
+If you enjoy this project, consider giving the repository a ⭐ to support future development.
