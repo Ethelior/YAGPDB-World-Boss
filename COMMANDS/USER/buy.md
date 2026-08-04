@@ -1,19 +1,3 @@
-{{/*
-================================================
- World Boss System
-
- Command:
- !buy
-
- Version:
- 1.0.0
-
- Description:
- Purchase items from the World Boss Shop.
-
-================================================
-*/}}
-
 {{$config := sdict
     "profilePrefix" "rpg_profile_"
 
@@ -100,6 +84,70 @@
     "sellable" true
     "effectType" "fullHeal"
     "effectValue" 0
+)}}
+
+{{/* =======================================================
+   Boost Items
+======================================================= */}}
+
+{{$items.Set "atk" (sdict
+    "name" "Attack Boost"
+    "price" 150
+    "sellPrice" 75
+    "category" "boost"
+    "stackable" true
+)}}
+
+{{$items.Set "def" (sdict
+    "name" "Defense Boost"
+    "price" 150
+    "sellPrice" 75
+    "category" "boost"
+    "stackable" true
+)}}
+
+{{$items.Set "xp" (sdict
+    "name" "XP Boost"
+    "price" 250
+    "sellPrice" 125
+    "category" "boost"
+    "stackable" true
+)}}
+
+{{$items.Set "token" (sdict
+    "name" "Boss Token Boost"
+    "price" 300
+    "sellPrice" 150
+    "category" "boost"
+    "stackable" true
+)}}
+
+{{/* =======================================================
+   Inventory Items
+======================================================= */}}
+
+{{$items.Set "bag5" (sdict
+    "name" "Inventory +5"
+    "price" 150
+    "sellPrice" 75
+    "category" "inventory"
+    "stackable" true
+)}}
+
+{{$items.Set "bag10" (sdict
+    "name" "Inventory +10"
+    "price" 250
+    "sellPrice" 125
+    "category" "inventory"
+    "stackable" true
+)}}
+
+{{$items.Set "bag20" (sdict
+    "name" "Inventory +20"
+    "price" 500
+    "sellPrice" 250
+    "category" "inventory"
+    "stackable" true
 )}}
 
 {{/* =======================================================
