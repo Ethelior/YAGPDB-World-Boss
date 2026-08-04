@@ -1,22 +1,3 @@
-{{/*
-================================================
- World Boss System
-
- Command:
- !inventory
-
- Version:
- 2.1.0
-
- Created by:
- Ethelior
-
- Description:
- Displays a player's inventory.
-
-================================================
-*/}}
-
 {{$config := sdict
 
     "profilePrefix" "rpg_profile_"
@@ -76,19 +57,76 @@
 
 {{$itemDB := sdict}}
 
+{{/* =========================
+   Consumables
+========================= */}}
+
 {{$itemDB.Set "hp" (sdict
     "name" "HP Potion"
     "emoji" "❤️"
+    "category" "consumable"
 )}}
 
 {{$itemDB.Set "ghp" (sdict
     "name" "Greater HP Potion"
     "emoji" "💚"
+    "category" "consumable"
 )}}
 
 {{$itemDB.Set "maxhp" (sdict
     "name" "Max HP Potion"
     "emoji" "💖"
+    "category" "consumable"
+)}}
+
+{{/* =========================
+   Boosts
+========================= */}}
+
+{{$itemDB.Set "atk" (sdict
+    "name" "Attack Boost"
+    "emoji" "⚔️"
+    "category" "boost"
+)}}
+
+{{$itemDB.Set "def" (sdict
+    "name" "Defense Boost"
+    "emoji" "🛡️"
+    "category" "boost"
+)}}
+
+{{$itemDB.Set "xp" (sdict
+    "name" "XP Boost"
+    "emoji" "⭐"
+    "category" "boost"
+)}}
+
+{{$itemDB.Set "token" (sdict
+    "name" "Boss Token Boost"
+    "emoji" "🪙"
+    "category" "boost"
+)}}
+
+{{/* =========================
+   Inventory Upgrades
+========================= */}}
+
+{{$itemDB.Set "bag5" (sdict
+    "name" "Inventory +5"
+    "emoji" "🎒"
+    "category" "inventory"
+)}}
+
+{{$itemDB.Set "bag10" (sdict
+    "name" "Inventory +10"
+    "emoji" "🎒"
+    "category" "inventory"
+)}}
+
+{{$itemDB.Set "bag20" (sdict
+    "name" "Inventory +20"
+    "emoji" "🎒"
+    "category" "inventory"
 )}}
 
 {{/* =======================================================
@@ -97,7 +135,9 @@
 
 {{$usedSlots := 0}}
 
-{{$inventoryText := ""}}
+{{$consumables := ""}}
+{{$boosts := ""}}
+{{$inventoryItems := ""}}
 
 {{range $itemID, $amount := $inventory}}
 
@@ -109,14 +149,15 @@
 
         {{$emoji := "📦"}}
         {{$name := $itemID}}
+        {{$category := ""}}
 
         {{if $item}}
             {{$emoji = $item.emoji}}
             {{$name = $item.name}}
+            {{$category = $item.category}}
         {{end}}
 
-        {{$inventoryText = print
-            $inventoryText
+        {{$line := print
             $emoji
             " "
             $name
@@ -125,14 +166,34 @@
             "\n"
         }}
 
+        {{if eq $category "consumable"}}
+
+            {{$consumables = print $consumables $line}}
+
+        {{else if eq $category "boost"}}
+
+            {{$boosts = print $boosts $line}}
+
+        {{else if eq $category "inventory"}}
+
+            {{$inventoryItems = print $inventoryItems $line}}
+
+        {{end}}
+
     {{end}}
 
 {{end}}
 
-{{if eq $inventoryText ""}}
+{{if eq $consumables ""}}
+    {{$consumables = "*Empty*"}}
+{{end}}
 
-{{$inventoryText = "Your inventory is empty."}}
+{{if eq $boosts ""}}
+    {{$boosts = "*Empty*"}}
+{{end}}
 
+{{if eq $inventoryItems ""}}
+    {{$inventoryItems = "*Empty*"}}
 {{end}}
 
 {{$freeSlots := sub $maxSlots $usedSlots}}
@@ -158,16 +219,28 @@
         )
 
         (sdict
-            "name" "📦 Inventory"
-            "value" $inventoryText
-            "inline" false
-        )
+    "name" "❤️ Consumables"
+    "value" $consumables
+    "inline" false
+)
 
-        (sdict
-            "name" "📊 Capacity"
-            "value" $capacityText
-            "inline" false
-        )
+(sdict
+    "name" "⚡ Boosts"
+    "value" $boosts
+    "inline" false
+)
+
+(sdict
+    "name" "🎒 Inventory Upgrades"
+    "value" $inventoryItems
+    "inline" false
+)
+
+              (sdict
+    "name" "📊 Capacity"
+    "value" $capacityText
+    "inline" false
+)
 
     )
 
