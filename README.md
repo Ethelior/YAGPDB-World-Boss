@@ -85,7 +85,6 @@ It includes:
 README.md
 INSTALLATION.md
 CONTRIBUTING.md
-CHANGELOG.md
 LICENSE
 
 Commands/
